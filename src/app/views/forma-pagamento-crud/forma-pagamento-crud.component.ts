@@ -13,8 +13,8 @@ export class FormaPagamentoCrudComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigateToFormaPagamentoCreate(): void {
-    this.router.navigate(['fpagamentos/create'])
-  }
+  navigateToFormaPagamentoCreate(): void{
+      this.router.navigate(['/fpagamentos/create'])
+    }
 
 }

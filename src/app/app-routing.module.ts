@@ -5,6 +5,9 @@ import { ProdutoCrudComponent } from './views/produto-crud/produto-crud.componen
 import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
 import { EstudioCrudComponent } from './views/estudio-crud/estudio-crud.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
+import { ClienteCreateComponent } from './components/Cliente/cliente-create/cliente-create.component';
+import { ProdutoCreateComponent } from './components/Produto/produto-create/produto-create.component';
+import { EstudioCreateComponent } from './components/Estudio/estudio-create/estudio-create.component';
 
 
 //configuração para rotear entre as paginas na home
@@ -22,13 +25,26 @@ const routes: Routes = [
     component: ProdutoCrudComponent
   },
   {
+    path: "fproduto/create",
+    component: ProdutoCreateComponent
+  },
+  {
     path: "fcliente",
     component: ClienteCrudComponent
+  },
+   {
+    path: "fcliente/create",
+    component: ClienteCreateComponent
   },
   {
     path: "festudio",
     component: EstudioCrudComponent
-  }
+  },
+   {
+    path: "festudio/create",
+    component: EstudioCreateComponent
+  },
+
 
 ];
 

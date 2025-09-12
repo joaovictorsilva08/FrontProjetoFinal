@@ -31,6 +31,9 @@ import { ProdutoCrudComponent } from './views/produto-crud/produto-crud.componen
 import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
 import { EstudioCrudComponent } from './views/estudio-crud/estudio-crud.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
+import { ClienteCreateComponent } from './components/Cliente/cliente-create/cliente-create.component';
+import { ProdutoCreateComponent } from './components/Produto/produto-create/produto-create.component';
+import { EstudioCreateComponent } from './components/Estudio/estudio-create/estudio-create.component';
 
 registerLocaleData(localePt)
 
@@ -44,7 +47,10 @@ registerLocaleData(localePt)
     ProdutoCrudComponent,
     ClienteCrudComponent,
     EstudioCrudComponent,
-    FormaPagamentoCreateComponent
+    FormaPagamentoCreateComponent,
+    ClienteCreateComponent,
+    ProdutoCreateComponent,
+    EstudioCreateComponent
   ],
   imports: [
     BrowserModule,
