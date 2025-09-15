@@ -1,9 +1,14 @@
-form {
+.form-container {
     display: flex;
-    flex-direction: column;
-
-}
-
-button { 
-    margin: 20px 15px 0px 0px;
-}
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  mat-form-field {
+    flex: 1 1 300px;
+  }
+  
+  .full-width {
+    flex: 1 1 100%;
+  }
+  

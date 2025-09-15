@@ -4,6 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+
 
 //modulos importados de "material" para usar seus componentes
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -34,6 +38,7 @@ import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma
 import { ClienteCreateComponent } from './components/Cliente/cliente-create/cliente-create.component';
 import { ProdutoCreateComponent } from './components/Produto/produto-create/produto-create.component';
 import { EstudioCreateComponent } from './components/Estudio/estudio-create/estudio-create.component';
+import { MatOptionModule } from "@angular/material/core";
 
 registerLocaleData(localePt)
 
@@ -57,20 +62,24 @@ registerLocaleData(localePt)
     AppRoutingModule,
     BrowserAnimationsModule,
     //precisamos declara os modulos de material importados
-    MatToolbarModule, 
+    MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatCheckboxModule,
     HttpClientModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
-  ],
+    MatSortModule,
+    MatOptionModule
+],
   providers: [{
     provide: LOCALE_ID,
     useValue: 'pt-BR'
