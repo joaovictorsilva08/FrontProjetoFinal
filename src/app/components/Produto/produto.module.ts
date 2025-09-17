@@ -18,6 +18,4 @@ export interface Produto {
   proObservacoes?: string;
   proAtivo: boolean;
 
-  proFornecedor?: any;
-  endFornecedor?: any;
 }
