@@ -7,20 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
-
-//modulos importados de "material" para usar seus componentes
+// módulos importados de "material" para usar seus componentes
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-//pegar http 
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+// pegar http
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -39,6 +37,10 @@ import { ClienteCreateComponent } from './components/Cliente/cliente-create/clie
 import { ProdutoCreateComponent } from './components/Produto/produto-create/produto-create.component';
 import { EstudioCreateComponent } from './components/Estudio/estudio-create/estudio-create.component';
 import { MatOptionModule } from "@angular/material/core";
+import { ProdutoReadComponent } from './components/Produto/produto-read/produto-read.component';
+import { ClienteReadComponent } from './components/Cliente/cliente-read/cliente-read.component';
+
+import { MatIconModule } from '@angular/material/icon';  // <--- ADICIONEI ESTE AQUI
 
 registerLocaleData(localePt)
 
@@ -55,13 +57,15 @@ registerLocaleData(localePt)
     FormaPagamentoCreateComponent,
     ClienteCreateComponent,
     ProdutoCreateComponent,
-    EstudioCreateComponent
+    EstudioCreateComponent,
+    ProdutoReadComponent,
+    ClienteReadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    //precisamos declara os modulos de material importados
+    // precisaremos declarar os módulos de material importados
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -78,8 +82,9 @@ registerLocaleData(localePt)
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatOptionModule
-],
+    MatOptionModule,
+    MatIconModule   // <--- ADICIONEI ESTE AQUI também nos imports
+  ],
   providers: [{
     provide: LOCALE_ID,
     useValue: 'pt-BR'

@@ -13,7 +13,9 @@ export class ClienteCreateComponent implements OnInit {
 
   cliente: Cliente = {
     cliNome: '',
-    cliCpf: ''
+    cliCpf: '',
+    cliDataNascimento: ''
+
   }
 
   //importando productService
