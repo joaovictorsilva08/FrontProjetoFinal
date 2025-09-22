@@ -4,58 +4,52 @@
     <!-- ID -->
     <ng-container matColumnDef="cliId">
       <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.cliId }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.cliId }}</td>
     </ng-container>
 
     <!-- Nome -->
     <ng-container matColumnDef="cliNome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.cliNome }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.cliNome }}</td>
     </ng-container>
 
     <!-- CPF -->
     <ng-container matColumnDef="cliCpf">
       <th mat-header-cell *matHeaderCellDef>CPF</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.cliCpf }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.cliCpf }}</td>
     </ng-container>
 
-    <!-- Data de Nascimento -->
-    <ng-container matColumnDef="cliDataNascimento">
-      <th mat-header-cell *matHeaderCellDef>Data Nascimento</th>
-      <td mat-cell *matCellDef="let cliente">
-        {{ cliente.cliDataNascimento | date: 'dd/MM/yyyy' }}
-      </td>
-    </ng-container>
-
-    <!-- Sexo -->
-    <ng-container matColumnDef="cliSexo">
-      <th mat-header-cell *matHeaderCellDef>Sexo</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.cliSexo }}</td>
+    <!-- RG -->
+    <ng-container matColumnDef="cliRg">
+      <th mat-header-cell *matHeaderCellDef>RG</th>
+      <td mat-cell *matCellDef="let row">{{ row.cliRg }}</td>
     </ng-container>
 
     <!-- Ativo -->
     <ng-container matColumnDef="cliAtivo">
       <th mat-header-cell *matHeaderCellDef>Ativo</th>
-      <td mat-cell *matCellDef="let cliente">
-        <mat-icon *ngIf="cliente.cliAtivo === 'true' || cliente.cliAtivo === true" color="primary">check_circle</mat-icon>
-        <mat-icon *ngIf="cliente.cliAtivo !== 'true' && cliente.cliAtivo !== true" color="warn">cancel</mat-icon>
+      <td mat-cell *matCellDef="let row">
+        <mat-icon *ngIf="row.cliAtivo === 'true' || row.cliAtivo === true" color="primary">check_circle</mat-icon>
+        <mat-icon *ngIf="row.cliAtivo !== 'true' && row.cliAtivo !== true" color="warn">cancel</mat-icon>
       </td>
     </ng-container>
 
     <!-- Ações -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
-      <td mat-cell *matCellDef="let cliente">
-        <a [routerLink]="['/clientes/update', cliente.cliId]" class="edit">
-          <mat-icon>edit</mat-icon>
+      <td mat-cell *matCellDef="let row">
+        <a routerLink="/clientes/update/{{ row.cliId }}" class="edit">
+          <i class="material-icons">edit</i>
         </a>
-        <a [routerLink]="['/clientes/delete', cliente.cliId]" class="delete" style="margin-left: 8px;">
-          <mat-icon>delete</mat-icon>
+        <a routerLink="/clientes/delete/{{ row.cliId }}" class="delete" style="margin-left: 8px;">
+          <i class="material-icons">delete</i>
         </a>
       </td>
     </ng-container>
 
+    <!-- Cabeçalho e linhas -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
   </table>
 </div>

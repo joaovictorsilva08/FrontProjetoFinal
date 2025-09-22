@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../cliente.model';
 import { ClienteService } from '../cliente.service';
+import { Cliente } from '../cliente.model';
 
 @Component({
   selector: 'app-cliente-read',
@@ -8,26 +8,17 @@ import { ClienteService } from '../cliente.service';
   styleUrls: ['./cliente-read.component.css']
 })
 export class ClienteReadComponent implements OnInit {
-  clientes!: Cliente[];
-  displayedColumns = ['cliNome', 'cliCpf', 'cliDataNascimento', 'cliSexo', 'cliAtivo', 'action'];
 
-  constructor(private clienteService: ClienteService) { }
+  clientes: Cliente[] = [];
+
+  // IMPORTANTE: RG está incluído aqui
+  displayedColumns: string[] = [ 'cliNome', 'cliCpf',  'cliAtivo', 'action'];
+
+  constructor(private clienteService: ClienteService) {}
 
   ngOnInit(): void {
     this.clienteService.read().subscribe(clientes => {
-      this.clientes = clientes.map(cliente => ({
-        ...cliente,
-        cliDataNascimento: cliente.cliDataNascimento ? this.formatDate(new Date(cliente.cliDataNascimento)) : '',
-        cliDataCadastro: cliente.cliDataCadastro ? this.formatDate(new Date(cliente.cliDataCadastro)) : ''
-      }));
+      this.clientes = clientes;
     });
   }
-
-  formatDate(date: Date): string {
-    const d = new Date(date);
-    const month = ('0' + (d.getMonth() + 1)).slice(-2);
-    const day = ('0' + d.getDate()).slice(-2);
-    return `${d.getFullYear()}-${month}-${day}`;
-  }
 }
-

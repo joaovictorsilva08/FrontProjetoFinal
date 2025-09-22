@@ -3,11 +3,11 @@ export interface Cliente {
   cliNome: string;
   cliCpf: string;
   cliRg?: string;
-  cliDataNascimento?: Date | string;
-  cliSexo?: string;
-  cliDataCadastro?: Date | string;
+  cliDataNascimento?: string; // formato "yyyy-MM-dd" vindo do backend
+  cliSexo: string;           // Ex: "M", "F"
+  cliDataCadastro?: string;
   cliObservacoes?: string;
-  cliAtivo?: string;
+  cliAtivo?: string | boolean;
   endProprietario?: any;
   enderecos?: any[];
   contatos?: any[];
