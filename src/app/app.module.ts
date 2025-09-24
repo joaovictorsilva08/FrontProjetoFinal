@@ -25,6 +25,7 @@ import { MatSortModule } from '@angular/material/sort';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
@@ -39,8 +40,14 @@ import { EstudioCreateComponent } from './components/Estudio/estudio-create/estu
 import { MatOptionModule } from "@angular/material/core";
 import { ProdutoReadComponent } from './components/Produto/produto-read/produto-read.component';
 import { ClienteReadComponent } from './components/Cliente/cliente-read/cliente-read.component';
+import { MatIconModule } from '@angular/material/icon';
+import { EstudioReadComponent } from './components/Estudio/estudio-read/estudio-read.component';
+import { FormaPagamentoReadComponent } from './components/formaPagamento/forma-pagamento-read/forma-pagamento-read.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
-import { MatIconModule } from '@angular/material/icon';  // <--- ADICIONEI ESTE AQUI
+// Import ngx-charts
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
 
 registerLocaleData(localePt)
 
@@ -59,13 +66,17 @@ registerLocaleData(localePt)
     ProdutoCreateComponent,
     EstudioCreateComponent,
     ProdutoReadComponent,
-    ClienteReadComponent
+    ClienteReadComponent,
+    EstudioReadComponent,
+    FormaPagamentoReadComponent,
+    InicioComponent,
+    DashboardChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // precisaremos declarar os módulos de material importados
+    // Material Modules
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -83,7 +94,9 @@ registerLocaleData(localePt)
     MatPaginatorModule,
     MatSortModule,
     MatOptionModule,
-    MatIconModule   // <--- ADICIONEI ESTE AQUI também nos imports
+    MatIconModule,
+    // <-- Adicione aqui o ngx-charts
+    NgxChartsModule
   ],
   providers: [{
     provide: LOCALE_ID,

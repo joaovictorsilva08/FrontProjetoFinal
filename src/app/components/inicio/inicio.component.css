@@ -1,0 +1,76 @@
+.welcome-card {
+    margin-bottom: 24px;
+    background: #e3f2fd;
+  }
+  
+  .dashboard-main-content {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-cards-container {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    flex: 2 1 600px;
+  }
+  
+  .dashboard-card {
+    background: white;
+    color: #333;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 250px;
+    flex: 1 1 250px;
+  }
+  
+  mat-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  
+  mat-card-header mat-icon {
+    font-size: 36px;
+    color: #1976d2;
+  }
+  
+  mat-card-content h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d47a1;
+    text-align: center;
+  }
+  
+  /* Tabela próximas reservas */
+  .upcoming-reservas table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .upcoming-reservas th,
+  .upcoming-reservas td {
+    padding: 8px 12px;
+    text-align: left;
+  }
+  
+  .upcoming-reservas th {
+    border-bottom: 2px solid #1976d2;
+    color: #ffffff;
+  }
+  
+  /* Responsividade */
+  @media(max-width: 900px) {
+    .dashboard-main-content {
+      flex-direction: column;
+    }
+  
+    .dashboard-cards-container {
+      justify-content: center;
+    }
+  }
+  

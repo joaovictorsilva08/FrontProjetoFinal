@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { ProdutoCrudComponent } from './views/produto-crud/produto-crud.component';
 import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
@@ -9,8 +10,10 @@ import { ProdutoCreateComponent } from './components/Produto/produto-create/prod
 import { EstudioCreateComponent } from './components/Estudio/estudio-create/estudio-create.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
 
-//configuração para rotear entre as paginas na home
+import { InicioComponent } from './components/inicio/inicio.component';  // IMPORTAR AQUI
+
 const routes: Routes = [
+  { path: '', component: InicioComponent }, // ROTA INICIAL
   {
     path: "fpagamentos",
     component: FormaPagamentoCrudComponent
@@ -31,7 +34,7 @@ const routes: Routes = [
     path: "fcliente",
     component: ClienteCrudComponent
   },
-   {
+  {
     path: "fcliente/create",
     component: ClienteCreateComponent
   },
@@ -39,17 +42,15 @@ const routes: Routes = [
     path: "festudio",
     component: EstudioCrudComponent
   },
-   {
+  {
     path: "festudio/create",
     component: EstudioCreateComponent
   },
-
-
+  { path: '**', redirectTo: '', pathMatch: 'full' }  // ROTA CURINGA
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule { }
