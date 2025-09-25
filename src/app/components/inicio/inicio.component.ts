@@ -20,14 +20,12 @@ export class InicioComponent implements OnInit {
   produtosCadastrados = 30;
   formasPagamento = 5;
 
-  // Exemplo simples de próximas reservas
   proximasReservas: Reserva[] = [
     { cliente: 'João Silva', estudio: 'Estúdio A', data: '25/09/2025', horario: '14:00' },
     { cliente: 'Maria Souza', estudio: 'Estúdio B', data: '26/09/2025', horario: '09:00' },
     { cliente: 'Carlos Lima', estudio: 'Estúdio C', data: '27/09/2025', horario: '16:30' },
   ];
 
-  // Dados para gráfico simples (reservas por mês)
   reservasPorMes = [
     { name: 'Jan', value: 5 },
     { name: 'Fev', value: 8 },
@@ -37,18 +35,19 @@ export class InicioComponent implements OnInit {
     { name: 'Jun', value: 6 }
   ];
 
-  // Configurações para ngx-charts (caso queira usar)
   view: [number, number] = [600, 300];
-  // Cores, legendas, etc. podem ser configurados aqui
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
 
   constructor() { }
 
   ngOnInit(): void {
-    // Aqui você pode buscar os dados reais do backend
+    // Pode buscar dados reais aqui
   }
 
   criarReservaRapida(): void {
-    // Aqui você pode navegar para a tela de criação de reservas
     alert('Funcionalidade de criação rápida de reserva aqui!');
   }
 }
