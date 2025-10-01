@@ -69,7 +69,7 @@ registerLocaleData(localePt)
     ClienteReadComponent,
     EstudioReadComponent,
     FormaPagamentoReadComponent,
-    InicioComponent
+    InicioComponent,
     
   ],
   imports: [

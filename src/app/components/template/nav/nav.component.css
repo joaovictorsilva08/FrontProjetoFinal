@@ -9,6 +9,14 @@
     padding-right: 10px;
 }
 
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* não centralizar! */
+    padding-left: 16px;
+  }
+  
+
 .content{
     padding: 16px;
     background-color: #fff;

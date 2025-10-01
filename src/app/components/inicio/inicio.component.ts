@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from '../Cliente/cliente.service';
+  // ajuste o caminho conforme seu projeto
 
 interface Reserva {
   cliente: string;
@@ -15,7 +17,7 @@ interface Reserva {
 export class InicioComponent implements OnInit {
 
   reservasAtivas = 12;
-  clientesCadastrados = 45;
+  clientesCadastrados = 0;  // Inicializado com 0 até carregar do backend
   estudiosDisponiveis = 7;
   produtosCadastrados = 30;
   formasPagamento = 5;
@@ -41,10 +43,20 @@ export class InicioComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor() { }
+  constructor(private clienteService : ClienteService) { }
 
   ngOnInit(): void {
-    // Pode buscar dados reais aqui
+    this.loadClientesCount();
+  }
+
+  loadClientesCount(): void {
+    this.clienteService.count().subscribe({
+      next: (count) => this.clientesCadastrados = count,
+      error: () => {
+        this.clientesCadastrados = 0;
+        console.error('Erro ao carregar quantidade de clientes');
+      }
+    });
   }
 
   criarReservaRapida(): void {
