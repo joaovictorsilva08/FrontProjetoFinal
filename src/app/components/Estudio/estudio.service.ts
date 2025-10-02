@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Estudio } from './estudio.model';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, map } from 'rxjs'; // ✅ adiciona 'map'
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +47,13 @@ export class EstudioService {
     const url = `${this.baseUrl}/${estId}`;
     return this.http.delete<Estudio>(url).pipe(
       tap(() => this.showMessage('Estúdio deletado com sucesso!'))
+    );
+  }
+
+  // ✅ NOVO MÉTODO ADICIONADO: contar estúdios
+  count(): Observable<number> {
+    return this.read().pipe(
+      map(estudios => estudios.length)
     );
   }
 }

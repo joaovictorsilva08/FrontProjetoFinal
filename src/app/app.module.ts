@@ -47,6 +47,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 
 // Import ngx-charts
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ReservasComponent } from './components/reservas/reservas.component';
 
 
 registerLocaleData(localePt)
@@ -70,6 +71,7 @@ registerLocaleData(localePt)
     EstudioReadComponent,
     FormaPagamentoReadComponent,
     InicioComponent,
+    ReservasComponent,
     
   ],
   imports: [

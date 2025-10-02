@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../Cliente/cliente.service';
-  // ajuste o caminho conforme seu projeto
+import { FormapagamentoService } from '../formaPagamento/formapagamento.service';
+import { EstudioService } from '../Estudio/estudio.service';
+import { ProdutoService } from '../Produto/produto.service';
+import { ReservaService } from '../reservas/reserva.service'; // ✅ IMPORTADO
 
 interface Reserva {
   cliente: string;
@@ -16,11 +19,11 @@ interface Reserva {
 })
 export class InicioComponent implements OnInit {
 
-  reservasAtivas = 12;
-  clientesCadastrados = 0;  // Inicializado com 0 até carregar do backend
-  estudiosDisponiveis = 7;
-  produtosCadastrados = 30;
-  formasPagamento = 5;
+  reservasAtivas = 0; // ✅ alterado para iniciar com 0
+  clientesCadastrados = 0;
+  estudiosDisponiveis = 0;
+  produtosCadastrados = 0;
+  formasPagamento = 0;
 
   proximasReservas: Reserva[] = [
     { cliente: 'João Silva', estudio: 'Estúdio A', data: '25/09/2025', horario: '14:00' },
@@ -43,10 +46,20 @@ export class InicioComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor(private clienteService : ClienteService) { }
+  constructor(
+    private clienteService: ClienteService,
+    private formapagamentoService: FormapagamentoService,
+    private estudioService: EstudioService,
+    private produtoService: ProdutoService,
+    private reservaService: ReservaService // ✅ INJETADO
+  ) {}
 
   ngOnInit(): void {
     this.loadClientesCount();
+    this.loadFormasPagamentoCount();
+    this.loadEstudiosDisponiveisCount();
+    this.loadProdutosCount();
+    this.loadReservasAtivasCount(); // ✅ ADICIONADO
   }
 
   loadClientesCount(): void {
@@ -55,6 +68,49 @@ export class InicioComponent implements OnInit {
       error: () => {
         this.clientesCadastrados = 0;
         console.error('Erro ao carregar quantidade de clientes');
+      }
+    });
+  }
+
+  loadFormasPagamentoCount(): void {
+    this.formapagamentoService.read().subscribe({
+      next: (formas) => {
+        this.formasPagamento = formas.length;
+      },
+      error: (err) => {
+        this.formasPagamento = 0;
+        console.error('Erro ao carregar formas de pagamento', err);
+      }
+    });
+  }
+
+  loadEstudiosDisponiveisCount(): void {
+    this.estudioService.count().subscribe({
+      next: (count) => this.estudiosDisponiveis = count,
+      error: (err) => {
+        this.estudiosDisponiveis = 0;
+        console.error('Erro ao carregar estúdios disponíveis', err);
+      }
+    });
+  }
+
+  loadProdutosCount(): void {
+    this.produtoService.count().subscribe({
+      next: (count) => this.produtosCadastrados = count,
+      error: (err) => {
+        this.produtosCadastrados = 0;
+        console.error('Erro ao carregar produtos cadastrados', err);
+      }
+    });
+  }
+
+  // ✅ NOVO MÉTODO PARA CONTAR RESERVAS ATIVAS
+  loadReservasAtivasCount(): void {
+    this.reservaService.countAtivas().subscribe({
+      next: (count) => this.reservasAtivas = count,
+      error: (err) => {
+        this.reservasAtivas = 0;
+        console.error('Erro ao carregar reservas ativas', err);
       }
     });
   }
