@@ -15,7 +15,7 @@ table {
 /* Cabeçalho da tabela */
 th.mat-header-cell {
   background-color: #94c2f7; /* azul claro */
-  color: #ffffff; /* texto branco */
+  color: #fff9f9; /* texto branco */
   font-weight: 600;
   text-align: left;
   padding: 12px 16px;

@@ -1,8 +1,43 @@
-form{
-    display: flex;
-    flex-direction: column;
-}
-
-button{
-    margin: 20px 15px 0px 0px;
-}
+.produto-card {
+    background: linear-gradient(135deg, #ffffff, #f9faff);
+    border-radius: 10px;
+    padding: 24px 32px;
+    max-width: 720px;
+    margin: 40px auto;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.07),
+      0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1976d2; /* Borda azul */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .produto-card:hover {
+    box-shadow:
+      0 10px 15px rgba(0, 0, 0, 0.15),
+      0 20px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+  }
+  
+  .form-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px 24px;
+  }
+  
+  .full-width {
+    grid-column: 1 / -1;
+  }
+  
+  .mat-form-field {
+    border: 1px solid #0a1a2b; /* Borda azul nos campos */
+    border-radius: 4px;
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: #1976d2; /* Cor da label ao focar */
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-underline {
+    background-color: #1976d2; /* Cor da linha de foco */
+  }
+  

@@ -35,6 +35,11 @@ const routes: Routes = [
     component: ClienteCrudComponent
   },
   {
+    path: 'fcliente/create',
+    component: ClienteCreateComponent
+  },
+  
+  {
     path: "fcliente/create",
     component: ClienteCreateComponent
   },

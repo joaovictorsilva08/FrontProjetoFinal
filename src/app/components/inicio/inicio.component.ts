@@ -3,7 +3,6 @@ import { ClienteService } from '../Cliente/cliente.service';
 import { FormapagamentoService } from '../formaPagamento/formapagamento.service';
 import { EstudioService } from '../Estudio/estudio.service';
 import { ProdutoService } from '../Produto/produto.service';
-import { ReservaService } from '../reservas/reserva.service'; // ✅ IMPORTADO
 
 interface Reserva {
   cliente: string;
@@ -15,7 +14,8 @@ interface Reserva {
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
+  
 })
 export class InicioComponent implements OnInit {
 
@@ -51,7 +51,6 @@ export class InicioComponent implements OnInit {
     private formapagamentoService: FormapagamentoService,
     private estudioService: EstudioService,
     private produtoService: ProdutoService,
-    private reservaService: ReservaService // ✅ INJETADO
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +58,6 @@ export class InicioComponent implements OnInit {
     this.loadFormasPagamentoCount();
     this.loadEstudiosDisponiveisCount();
     this.loadProdutosCount();
-    this.loadReservasAtivasCount(); // ✅ ADICIONADO
   }
 
   loadClientesCount(): void {
@@ -104,16 +102,8 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  // ✅ NOVO MÉTODO PARA CONTAR RESERVAS ATIVAS
-  loadReservasAtivasCount(): void {
-    this.reservaService.countAtivas().subscribe({
-      next: (count) => this.reservasAtivas = count,
-      error: (err) => {
-        this.reservasAtivas = 0;
-        console.error('Erro ao carregar reservas ativas', err);
-      }
-    });
-  }
+
+
 
   criarReservaRapida(): void {
     alert('Funcionalidade de criação rápida de reserva aqui!');

@@ -35,17 +35,19 @@
     </ng-container>
 
     <!-- Ações -->
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef>Ações</th>
-      <td mat-cell *matCellDef="let row">
-        <a routerLink="/clientes/update/{{ row.cliId }}" class="edit">
-          <i class="material-icons">edit</i>
-        </a>
-        <a routerLink="/clientes/delete/{{ row.cliId }}" class="delete" style="margin-left: 8px;">
-          <i class="material-icons">delete</i>
-        </a>
-      </td>
-    </ng-container>
+  <!-- Ações -->
+<ng-container matColumnDef="action">
+  <th mat-header-cell *matHeaderCellDef>Ações</th>
+  <td mat-cell *matCellDef="let row">
+    <button mat-icon-button color="primary" (click)="editarCliente(row.cliId)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deletarCliente(row.cliId)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
 
     <!-- Cabeçalho e linhas -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

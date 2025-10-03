@@ -1,17 +1,48 @@
-.form-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  mat-form-field {
-    flex: 1 1 300px; /* Faz os campos ficarem lado a lado em telas maiores */
-  }
-  
-  .full-width {
-    flex: 1 1 100%;
-    .content {
-  padding-top: 64px; /* para “empurrar” o conteúdo pra baixo do header fixo */
+/* Estilo para todos os cards de formulário */
+mat-card {
+  background: linear-gradient(135deg, #ffffff, #f9faff);
+  border-radius: 10px;
+  padding: 24px 32px;
+  max-width: 720px;
+  margin: 40px auto;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 10px 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid #1976d2; /* Borda azul */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-  }
-  
+
+mat-card:hover {
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.15),
+    0 20px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Container do formulário para layout responsivo */
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px 24px;
+}
+
+/* Classe para campos que ocupam toda largura */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Borda azul nos campos do formulário */
+.mat-form-field {
+  border: 1px solid #0a1a2b;
+  border-radius: 4px;
+}
+
+/* Cor da label ao focar no campo */
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #1976d2;
+}
+
+/* Cor da linha de foco nos campos */
+.mat-form-field.mat-focused .mat-form-field-underline {
+  background-color: #1976d2;
+}
