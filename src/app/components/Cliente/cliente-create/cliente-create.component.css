@@ -1,14 +1,14 @@
-/* Estilo para todos os cards de formulário */
+/* === CARD PRINCIPAL === */
 mat-card {
   background: linear-gradient(135deg, #ffffff, #f9faff);
   border-radius: 10px;
   padding: 24px 32px;
-  max-width: 720px;
+  max-width: 1000px;
   margin: 40px auto;
   box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.07),
     0 10px 20px rgba(0, 0, 0, 0.1);
-  border: 2px solid #1976d2; /* Borda azul */
+  border: 2px solid #1976d2;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -19,30 +19,126 @@ mat-card:hover {
   transform: translateY(-8px);
 }
 
-/* Container do formulário para layout responsivo */
+/* === CONTAINER GERAL DO FORMULÁRIO === */
 .form-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px 24px;
 }
 
-/* Classe para campos que ocupam toda largura */
+/* Campos que ocupam toda a linha */
 .full-width {
   grid-column: 1 / -1;
 }
 
-/* Borda azul nos campos do formulário */
+/* === CAMPOS PADRÃO === */
+mat-form-field {
+  width: 100%;
+}
+
+/* Borda azul escura e label customizada */
 .mat-form-field {
   border: 1px solid #0a1a2b;
   border-radius: 4px;
 }
 
-/* Cor da label ao focar no campo */
 .mat-form-field.mat-focused .mat-form-field-label {
   color: #1976d2;
 }
 
-/* Cor da linha de foco nos campos */
 .mat-form-field.mat-focused .mat-form-field-underline {
   background-color: #1976d2;
+}
+
+/* === SEÇÕES DE ENDEREÇOS E CONTATOS === */
+h3 {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #0a1a2b;
+  font-weight: 600;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 4px;
+}
+
+/* Containers laterais de endereço e contato */
+.endereco-container,
+.contato-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  grid-column: 1 / -1;
+}
+
+/* Campos lado a lado */
+.endereco-container mat-form-field,
+.contato-container mat-form-field {
+  flex: 1 1 200px;
+}
+
+/* Botão “Adicionar” */
+.endereco-container button,
+.contato-container button {
+  height: 56px;
+  white-space: nowrap;
+  border-radius: 8px;
+  background-color: #1976d2;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.endereco-container button:hover,
+.contato-container button:hover {
+  background-color: #0d47a1;
+}
+
+/* === LISTA DE ITENS ADICIONADOS === */
+mat-list {
+  grid-column: 1 / -1;
+  background: #f5f7fa;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+  margin-top: 8px;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-list-item button {
+  color: #d32f2f;
+}
+
+/* ================= CARDS LADO A LADO ================= */
+.side-by-side {
+  display: flex;
+  gap: 24px;          /* espaço entre os cards */
+  flex-wrap: wrap;     /* quebra para mobile */
+  margin-top: 24px;
+}
+
+/* Cada card ocupa metade da largura no desktop, 100% no mobile */
+.endereco-card,
+.contato-card {
+  flex: 1 1 48%;       /* largura aproximada 50% */
+  min-width: 280px;    /* evita campos muito pequenos */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Mantém os campos de formulário bem alinhados */
+.endereco-card mat-form-field,
+.contato-card mat-form-field {
+  width: 100%;
+}
+
+/* Botões "Adicionar" */
+.endereco-card button,
+.contato-card button {
+  width: fit-content;
+  align-self: flex-start; /* botão à esquerda */
 }

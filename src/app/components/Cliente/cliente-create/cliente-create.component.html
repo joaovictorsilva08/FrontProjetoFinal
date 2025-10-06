@@ -1,76 +1,142 @@
 <mat-card class="cliente-create-card">
   <mat-card-title>Novo Cliente</mat-card-title>
-
   <form (ngSubmit)="createCliente()" #clienteForm="ngForm">
 
-    <div class="form-container">
+    <!-- ================= DADOS DO CLIENTE ================= -->
+    <mat-card class="card-section">
+      <mat-card-header>
+        <mat-card-title>Dados do Cliente</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-container">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="cliente.cliNome" name="cliNome" required />
+          </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="cliente.cliNome" name="cliNome" required />
-      </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput [(ngModel)]="cliente.cliCpf" name="cliCpf" required />
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>CPF</mat-label>
-        <input matInput [(ngModel)]="cliente.cliCpf" name="cliCpf" required />
-      </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>RG</mat-label>
+            <input matInput [(ngModel)]="cliente.cliRg" name="cliRg" />
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>RG</mat-label>
-        <input matInput [(ngModel)]="cliente.cliRg" name="cliRg" />
-      </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput type="date" [(ngModel)]="cliente.cliDataNascimento" name="cliDataNascimento" required />
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Data de Nascimento</mat-label>
-        <input matInput type="date" [(ngModel)]="cliente.cliDataNascimento" name="cliDataNascimento" required />
-      </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select [(ngModel)]="cliente.cliSexo" name="cliSexo" required>
+              <mat-option value="Masculino">Masculino</mat-option>
+              <mat-option value="Feminino">Feminino</mat-option>
+              <mat-option value="Outro">Outro</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Sexo</mat-label>
-        <mat-select [(ngModel)]="cliente.cliSexo" name="cliSexo" required>
-          <mat-option value="Masculino">Masculino</mat-option>
-          <mat-option value="Feminino">Feminino</mat-option>
-          <mat-option value="Outro">Outro</mat-option>
-        </mat-select>
-      </mat-form-field>
+          <mat-checkbox [(ngModel)]="cliente.cliAtivo" name="cliAtivo">Ativo</mat-checkbox>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Data de Cadastro</mat-label>
-        <input matInput type="date" [(ngModel)]="cliente.cliDataCadastro" name="cliDataCadastro" />
-      </mat-form-field>
+    <!-- ================= CARDS LADO A LADO ================= -->
+    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Observações</mat-label>
-        <textarea matInput [(ngModel)]="cliente.cliObservacoes" name="cliObservacoes"></textarea>
-      </mat-form-field>
+      <!-- ================= ENDEREÇOS ================= -->
+      <mat-card class="card-section" style="flex:1; min-width:300px;">
+        <mat-card-header>
+          <mat-card-title>Endereços</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap:8px; margin-bottom:8px;">
+            <mat-form-field appearance="fill">
+              <mat-label>Rua</mat-label>
+              <input matInput [(ngModel)]="novoEndereco.endRua" name="endRua" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Número</mat-label>
+              <input matInput [(ngModel)]="novoEndereco.endNumero" name="endNumero" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Cidade</mat-label>
+              <input matInput [(ngModel)]="novoEndereco.endCidade" name="endCidade" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>CEP</mat-label>
+              <input matInput [(ngModel)]="novoEndereco.endCep" name="endCep" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Estado</mat-label>
+              <input matInput maxlength="2" [(ngModel)]="novoEndereco.endEstado" name="endEstado" />
+            </mat-form-field>
+          </div>
 
-      <mat-checkbox [(ngModel)]="cliente.cliAtivo" name="cliAtivo">Ativo</mat-checkbox>
+          <button mat-raised-button type="button" style="background-color:#1976d2; color:white;" (click)="adicionarEndereco()">
+            Adicionar Endereço
+          </button>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Endereço do Proprietário (texto para teste)</mat-label>
-        <input matInput [(ngModel)]="cliente.endProprietario" name="endProprietario" />
-      </mat-form-field>
+          <div *ngIf="cliente.enderecos?.length" style="margin-top:8px;">
+            <mat-list>
+              <mat-list-item *ngFor="let end of cliente.enderecos; let i = index">
+                {{ end.endRua }}, {{ end.endNumero }} - {{ end.endCidade }} ({{ end.endEstado }})
+                <button mat-icon-button color="warn" (click)="removerEndereco(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Endereços (texto para teste)</mat-label>
-        <textarea matInput [(ngModel)]="cliente.enderecos" name="enderecos"></textarea>
-      </mat-form-field>
+      <!-- ================= CONTATOS ================= -->
+      <mat-card class="card-section" style="flex:1; min-width:300px;">
+        <mat-card-header>
+          <mat-card-title>Contatos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap:8px; margin-bottom:8px;">
+            <mat-form-field appearance="fill">
+              <mat-label>Celular</mat-label>
+              <input matInput [(ngModel)]="novoContato.conCelular" name="conCelular" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Telefone Comercial</mat-label>
+              <input matInput [(ngModel)]="novoContato.conTelefoneComercial" name="conTelefoneComercial" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="novoContato.conEmail" name="conEmail" />
+            </mat-form-field>
+          </div>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Contatos (texto para teste)</mat-label>
-        <textarea matInput [(ngModel)]="cliente.contatos" name="contatos"></textarea>
-      </mat-form-field>
+          <button mat-raised-button type="button" style="background-color:#1976d2; color:white;" (click)="adicionarContato()">
+            Adicionar Contato
+          </button>
+
+          <div *ngIf="cliente.contatos?.length" style="margin-top:8px;">
+            <mat-list>
+              <mat-list-item *ngFor="let con of cliente.contatos; let i = index">
+                {{ con.conCelular }} | {{ con.conTelefoneComercial }} | {{ con.conEmail }}
+                <button mat-icon-button color="warn" (click)="removerContato(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
     </div>
 
-    <div style="margin-top: 16px;">
-      <button mat-raised-button color="primary" type="submit" [disabled]="clienteForm.invalid">
-        Salvar
-      </button>
-      <button mat-raised-button type="button" (click)="cancel()" style="margin-left: 8px;">
-        Cancelar
-      </button>
+    <!-- ================= BOTÕES ================= -->
+    <div style="margin-top:16px; display:flex; gap:8px;">
+      <button mat-raised-button type="submit" style="background-color:#1976d2; color:white;">Salvar</button>
+      <button mat-raised-button type="button" style="background-color:#1976d2; color:white;" (click)="cancel()">Cancelar</button>
     </div>
-
+    
   </form>
 </mat-card>
