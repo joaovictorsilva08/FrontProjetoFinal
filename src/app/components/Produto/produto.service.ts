@@ -31,18 +31,16 @@ export class ProdutoService {
     return this.http.get<Produto[]>(this.baseUrl);
   }
 
-  readById(proId: number): Observable<Produto> {
+  readById(proId: String): Observable<Produto> {
     return this.http.get<Produto>(`${this.baseUrl}/${proId}`);
   }
 
-  update(produto: Produto): Observable<Produto> {
-    const url = `${this.baseUrl}/${produto.proId}`;
-    return this.http.put<Produto>(url, produto).pipe(
-      tap(() => this.showMessage('Produto atualizado com sucesso!'))
-    );
+  update(produto: Produto): Observable<Produto>{
+    const url = `${this.baseUrl}/${produto.proId}`
+    return this.http.put<Produto>(url, produto)
   }
 
-  delete(proId: number): Observable<void> {
+  delete(proId: String): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${proId}`).pipe(
       tap(() => this.showMessage('Produto deletado com sucesso!'))
     );

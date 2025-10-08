@@ -44,6 +44,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { EstudioReadComponent } from './components/Estudio/estudio-read/estudio-read.component';
 import { FormaPagamentoReadComponent } from './components/formaPagamento/forma-pagamento-read/forma-pagamento-read.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { ProdutoUpdateComponent } from './components/Produto/produto-update/produto-update.component';
+
+
 
 // Import ngx-charts
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -70,6 +73,7 @@ registerLocaleData(localePt)
     EstudioReadComponent,
     FormaPagamentoReadComponent,
     InicioComponent,
+    ProdutoUpdateComponent
    
   ],
   imports: [

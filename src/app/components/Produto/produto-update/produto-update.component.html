@@ -1,0 +1,45 @@
+<mat-card *ngIf="product">
+    <mat-card-title>Alterar Produto</mat-card-title>
+  
+    <form #form="ngForm" (ngSubmit)="updateProduct()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="product.proNome"
+          name="proNome"
+        />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Preço de Custo (R$)</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="product.proPrecoCusto"
+          name="proPrecoCusto"
+        />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Preço de Venda (R$)</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="product.proPrecoVenda"
+          name="proPrecoVenda"
+        />
+      </mat-form-field>
+  
+      <div style="margin-top: 16px;">
+        <button mat-raised-button color="primary" type="submit">
+          Atualizar
+        </button>
+        <button mat-raised-button type="button" (click)="cancel()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </mat-card>
+  

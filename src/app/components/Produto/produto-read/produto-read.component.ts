@@ -34,7 +34,7 @@ export class ProdutoReadComponent {
   }
 
   // Deleta o produto
-  deletarProduto(id: number): void {
+  deletarProduto(id: String): void {
     if (confirm('Tem certeza que deseja deletar este produto?')) {
       this.produtoService.delete(id).subscribe({
         next: () => {

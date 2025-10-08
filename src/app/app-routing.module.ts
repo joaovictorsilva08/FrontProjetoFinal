@@ -11,6 +11,8 @@ import { EstudioCreateComponent } from './components/Estudio/estudio-create/estu
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
 
 import { InicioComponent } from './components/inicio/inicio.component';  // IMPORTAR AQUI
+import { ProdutoUpdateComponent } from './components/Produto/produto-update/produto-update.component';
+
 
 const routes: Routes = [
   { path: '', component: InicioComponent }, // ROTA INICIAL
@@ -29,6 +31,10 @@ const routes: Routes = [
   {
     path: "fproduto/create",
     component: ProdutoCreateComponent
+  },
+  {
+    path: "produto/update/:proId",
+    component: ProdutoUpdateComponent
   },
   {
     path: "fcliente",
