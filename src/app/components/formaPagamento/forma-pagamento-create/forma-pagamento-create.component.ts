@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormaPagamento } from '../formapagamento.model';
-import { FormapagamentoService } from '../formapagamento.service';
+import { formaPagamentoService } from '../formapagamento.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,7 +21,7 @@ export class FormaPagamentoCreateComponent implements OnInit {
   };
 
   constructor(
-    private formapagamentoService: FormapagamentoService,
+    private formapagamentoService: formaPagamentoService,
     private router: Router
   ) {}
 

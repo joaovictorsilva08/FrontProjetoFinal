@@ -45,11 +45,14 @@ import { EstudioReadComponent } from './components/Estudio/estudio-read/estudio-
 import { FormaPagamentoReadComponent } from './components/formaPagamento/forma-pagamento-read/forma-pagamento-read.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ProdutoUpdateComponent } from './components/Produto/produto-update/produto-update.component';
+import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma-pagamento-update/formapagamento-update.component';
 
 
 
 // Import ngx-charts
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EstudioUpdateComponent } from './components/Estudio/estudio-update/estudio-update.component';
+import { ClienteUpdateComponent } from './components/Cliente/cliente-update/cliente-update.component';
 
 
 registerLocaleData(localePt)
@@ -73,7 +76,10 @@ registerLocaleData(localePt)
     EstudioReadComponent,
     FormaPagamentoReadComponent,
     InicioComponent,
-    ProdutoUpdateComponent
+    ProdutoUpdateComponent,
+    FormaPagamentoUpdateComponent,
+    EstudioUpdateComponent,
+    ClienteUpdateComponent,
    
   ],
   imports: [

@@ -47,15 +47,17 @@
     </ng-container>
 
     <!-- Ações -->
-    <ng-container matColumnDef="action">
+    <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" aria-label="Editar" (click)="editarEstudio(row.estId)">
-          <mat-icon>edit</mat-icon>
-        </button>
+        <div class="action-column-content">
+          <a [routerLink]="['/estudios/update', row.estId]" class="edit" aria-label="Editar">
+            <mat-icon>edit</mat-icon>
+          </a>
         <button mat-icon-button color="warn" aria-label="Deletar" (click)="deletarEstudio(row.estId)">
           <mat-icon>delete</mat-icon>
         </button>
+        </div>
       </td>
     </ng-container>
 

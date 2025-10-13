@@ -19,7 +19,7 @@ export class EstudioReadComponent implements OnInit {
     'estTelefone',
     'estEmail',
     'estAtivo',
-    'action'
+    'actions'
   ];
 
   constructor(
@@ -34,7 +34,7 @@ export class EstudioReadComponent implements OnInit {
   }
 
   editarEstudio(id: number): void {
-    this.router.navigate(['/festudio/update', id]);
+    this.router.navigate(['/estudios/update', id]);
   }
 
   deletarEstudio(id: number): void {

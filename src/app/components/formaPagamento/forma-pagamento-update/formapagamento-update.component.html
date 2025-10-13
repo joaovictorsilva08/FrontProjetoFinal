@@ -1,0 +1,63 @@
+<mat-card *ngIf="formaPagamento">
+    <mat-card-title>{{ formaPagamento.formId ? 'Editar' : 'Nova' }} Forma de Pagamento</mat-card-title>
+  
+    <form #formaPagamentoForm="ngForm" (ngSubmit)="salvarFormaPagamento()">
+  
+      <!-- Descrição -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Descrição</mat-label>
+        <input matInput required [(ngModel)]="formaPagamento.formDescricao" name="formDescricao" />
+      </mat-form-field>
+  
+      <!-- Tipo -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Tipo</mat-label>
+        <mat-select [(ngModel)]="formaPagamento.formTipo" name="formTipo" required>
+          <mat-option value="Crédito">Crédito</mat-option>
+          <mat-option value="Débito">Débito</mat-option>
+          <mat-option value="Dinheiro">Dinheiro</mat-option>
+          <mat-option value="PIX">PIX</mat-option>
+          <!-- Adicione outros tipos conforme necessário -->
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Número de Parcelas -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Número de Parcelas</mat-label>
+        <input matInput type="number" [(ngModel)]="formaPagamento.formNumeroParcelas" name="formNumeroParcelas" />
+      </mat-form-field>
+  
+      <!-- Dias entre Parcelas -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Dias entre Parcelas</mat-label>
+        <input matInput type="number" [(ngModel)]="formaPagamento.formDiasEntreParcelas" name="formDiasEntreParcelas" />
+      </mat-form-field>
+  
+      <!-- Taxa Percentual -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Taxa (%)</mat-label>
+        <input matInput type="number" [(ngModel)]="formaPagamento.formTaxaPercentual" name="formTaxaPercentual" />
+      </mat-form-field>
+  
+      <!-- Permite Troco -->
+      <mat-checkbox [(ngModel)]="formaPagamento.formPermiteTroco" name="formPermiteTroco">
+        Permite Troco
+      </mat-checkbox>
+  
+      <!-- Ativo -->
+      <mat-checkbox [(ngModel)]="formaPagamento.formAtivo" name="formAtivo">
+        Ativo
+      </mat-checkbox>
+  
+      <div style="margin-top: 16px;">
+        <button mat-raised-button color="primary" type="submit">
+          {{ formaPagamento.formId ? 'Atualizar' : 'Salvar' }}
+        </button>
+        <button mat-raised-button type="button" (click)="cancelarEdicaoFormaPagamento()">
+          Cancelar
+        </button>
+      </div>
+  
+    </form>
+  </mat-card>
+  

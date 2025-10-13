@@ -1,0 +1,12 @@
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 16px;
+    background-color: #f9f9f9;
+  }
+  

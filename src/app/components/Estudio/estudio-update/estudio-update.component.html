@@ -1,0 +1,44 @@
+<mat-card *ngIf="estudio">
+    <mat-card-title>{{ estudio.estId ? 'Editar' : 'Nova' }} Estúdio</mat-card-title>
+  
+    <form #estudioForm="ngForm" (ngSubmit)="salvarEstudio()">
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput required [(ngModel)]="estudio.estNome" name="estNome" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>CNPJ</mat-label>
+        <input matInput required [(ngModel)]="estudio.estCnpj" name="estCnpj" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Endereço</mat-label>
+        <input matInput [(ngModel)]="estudio.estEndereco" name="estEndereco" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Telefone</mat-label>
+        <input matInput [(ngModel)]="estudio.estTelefone" name="estTelefone" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="estudio.estEmail" name="estEmail" />
+      </mat-form-field>
+  
+      <mat-checkbox [(ngModel)]="estudio.estAtivo" name="estAtivo">Ativo</mat-checkbox>
+  
+      <div style="margin-top: 16px;">
+        <button mat-raised-button color="primary" type="submit">
+          {{ estudio.estId ? 'Atualizar' : 'Salvar' }}
+        </button>
+        <button mat-raised-button type="button" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+  
+    </form>
+  </mat-card>
+  

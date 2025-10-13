@@ -12,6 +12,9 @@ import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma
 
 import { InicioComponent } from './components/inicio/inicio.component';  // IMPORTAR AQUI
 import { ProdutoUpdateComponent } from './components/Produto/produto-update/produto-update.component';
+import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma-pagamento-update/formapagamento-update.component';
+import { EstudioUpdateComponent } from './components/Estudio/estudio-update/estudio-update.component';
+import { ClienteUpdateComponent } from './components/Cliente/cliente-update/cliente-update.component';
 
 
 const routes: Routes = [
@@ -24,6 +27,12 @@ const routes: Routes = [
     path: "fpagamentos/create",
     component: FormaPagamentoCreateComponent
   },
+  
+  {
+    path: 'formas-pagamento/update/:formId',
+    component: FormaPagamentoUpdateComponent
+  },
+  
   {
     path: "fproduto",
     component: ProdutoCrudComponent
@@ -44,11 +53,12 @@ const routes: Routes = [
     path: 'fcliente/create',
     component: ClienteCreateComponent
   },
-  
   {
-    path: "fcliente/create",
-    component: ClienteCreateComponent
+    path: 'clientes/update/:cliId',
+    component: ClienteUpdateComponent
   },
+  
+
   {
     path: "festudio",
     component: EstudioCrudComponent
@@ -57,6 +67,13 @@ const routes: Routes = [
     path: "festudio/create",
     component: EstudioCreateComponent
   },
+  {
+    path: 'estudios/update/:estId',
+    component: EstudioUpdateComponent
+  },
+  
+  
+  
   { path: '**', redirectTo: '', pathMatch: 'full' }  // ROTA CURINGA
 ];
 

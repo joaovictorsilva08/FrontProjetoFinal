@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormaPagamento } from '../formapagamento.model';  // ajuste caminho
-import { FormapagamentoService } from '../formapagamento.service'; // ajuste caminho
+import { formaPagamentoService } from '../formapagamento.service'; // ajuste caminho
 
 @Component({
   selector: 'app-forma-pagamento-read',
@@ -24,7 +24,7 @@ export class FormaPagamentoReadComponent implements OnInit {
   ];
 
   constructor(
-    private formaPagamentoService: FormapagamentoService,
+    private formaPagamentoService: formaPagamentoService,
     private router: Router
   ) {}
 

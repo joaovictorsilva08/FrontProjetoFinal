@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../Cliente/cliente.service';
-import { FormapagamentoService } from '../formaPagamento/formapagamento.service';
+import { formaPagamentoService } from '../formaPagamento/formapagamento.service';
 import { EstudioService } from '../Estudio/estudio.service';
 import { ProdutoService } from '../Produto/produto.service';
 
@@ -48,7 +48,7 @@ export class InicioComponent implements OnInit {
 
   constructor(
     private clienteService: ClienteService,
-    private formapagamentoService: FormapagamentoService,
+    private formapagamentoService: formaPagamentoService,
     private estudioService: EstudioService,
     private produtoService: ProdutoService,
   ) {}

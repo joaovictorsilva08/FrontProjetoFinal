@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FormapagamentoService {
+export class formaPagamentoService {
 
   readonly baseUrl = "http://localhost:8080/formapagamentos";
 
