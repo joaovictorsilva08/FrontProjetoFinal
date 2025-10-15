@@ -1,10 +1,12 @@
 export interface Contato {
+  conId?: number;
   conCelular: string;
   conTelefoneComercial: string;
   conEmail: string;
 }
 
 export interface Endereco {
+  endId?: number;
   endRua: string;
   endNumero: string;
   endCidade: string;

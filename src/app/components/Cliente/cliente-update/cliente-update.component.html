@@ -1,41 +1,126 @@
-<mat-card *ngIf="cliente">
-    <mat-card-title>{{ cliente.cliId ? 'Editar' : 'Novo' }} Cliente</mat-card-title>
-  
-    <form #clienteForm="ngForm" (ngSubmit)="salvarCliente()">
-  
-      <!-- Nome -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Nome</mat-label>
-        <input matInput required [(ngModel)]="cliente.cliNome" name="cliNome" />
-      </mat-form-field>
-  
-      <!-- CPF -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>CPF</mat-label>
-        <input matInput required [(ngModel)]="cliente.cliCpf" name="cliCpf" />
-      </mat-form-field>
-  
-      <!-- RG -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>RG</mat-label>
-        <input matInput [(ngModel)]="cliente.cliRg" name="cliRg" />
-      </mat-form-field>
-  
-      <!-- Ativo -->
-      <mat-checkbox [(ngModel)]="cliente.cliAtivo" name="cliAtivo">
-        Ativo
-      </mat-checkbox>
-  
-      <!-- Botões -->
-      <div style="margin-top: 16px;">
-        <button mat-raised-button color="primary" type="submit">
-          {{ cliente.cliId ? 'Atualizar' : 'Salvar' }}
-        </button>
-        <button mat-raised-button type="button" (click)="cancelar()">
-          Cancelar
-        </button>
-      </div>
-  
-    </form>
-  </mat-card>
-  
+<mat-card *ngIf="cliente" class="cliente-update-card">
+  <mat-card-title>{{ cliente.cliId ? 'Editar' : 'Novo' }} Cliente</mat-card-title>
+
+  <form #clienteForm="ngForm" (ngSubmit)="updateCliente()">
+
+    <!-- ================= DADOS DO CLIENTE ================= -->
+    <mat-card class="card-section">
+      <mat-card-header>
+        <mat-card-title>Dados do Cliente</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-container">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput required [(ngModel)]="cliente.cliNome" name="cliNome" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput required [(ngModel)]="cliente.cliCpf" name="cliCpf" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>RG</mat-label>
+            <input matInput [(ngModel)]="cliente.cliRg" name="cliRg" />
+          </mat-form-field>
+
+          <mat-checkbox [(ngModel)]="cliente.cliAtivo" name="cliAtivo">Ativo</mat-checkbox>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- ================= CARDS LADO A LADO ================= -->
+    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
+
+      <!-- ================= ENDEREÇOS ================= -->
+      <mat-card class="card-section" style="flex:1; min-width:300px;">
+        <mat-card-header>
+          <mat-card-title>Endereços</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <div *ngFor="let end of cliente.enderecos; let i = index" class="form-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Rua</mat-label>
+              <input matInput [(ngModel)]="end.endRua" name="endRua{{i}}" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Número</mat-label>
+              <input matInput [(ngModel)]="end.endNumero" name="endNumero{{i}}" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Cidade</mat-label>
+              <input matInput [(ngModel)]="end.endCidade" name="endCidade{{i}}" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>CEP</mat-label>
+              <input matInput [(ngModel)]="end.endCep" name="endCep{{i}}" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Estado</mat-label>
+              <input matInput maxlength="2" [(ngModel)]="end.endEstado" name="endEstado{{i}}" />
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" (click)="removerEndereco(i)" matTooltip="Remover">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+          <button mat-raised-button type="button" color="primary" (click)="adicionarEndereco()">
+            Adicionar Endereço
+          </button>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- ================= CONTATOS ================= -->
+      <mat-card class="card-section" style="flex:1; min-width:300px;">
+        <mat-card-header>
+          <mat-card-title>Contatos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <div *ngFor="let con of cliente.contatos; let i = index" class="form-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Celular</mat-label>
+              <input matInput [(ngModel)]="con.conCelular" name="conCelular{{i}}" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Telefone Comercial</mat-label>
+              <input matInput [(ngModel)]="con.conTelefoneComercial" name="conTelefoneComercial{{i}}" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="con.conEmail" name="conEmail{{i}}" />
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" (click)="removerContato(i)" matTooltip="Remover">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+          <button mat-raised-button type="button" color="primary" (click)="adicionarContato()">
+            Adicionar Contato
+          </button>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+    <!-- ================= BOTÕES ================= -->
+    <div style="margin-top:16px; display:flex; gap:8px;">
+      <button mat-raised-button color="primary" type="submit">
+        {{ cliente.cliId ? 'Atualizar' : 'Salvar' }}
+      </button>
+      <button mat-raised-button type="button" (click)="cancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>

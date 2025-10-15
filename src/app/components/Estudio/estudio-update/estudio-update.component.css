@@ -1,8 +1,118 @@
-form{
-    display: flex;
-    flex-direction: column;
-}
-
-button{
-    margin: 20px 15px 0px 0px;
-}
+/* Estilo do card principal */
+mat-card {
+    background: linear-gradient(135deg, #ffffff, #f9faff);
+    border-radius: 10px;
+    padding: 24px 32px;
+    max-width: 720px;
+    margin: 40px auto;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.07),
+      0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1976d2; /* Borda azul */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  mat-card:hover {
+    box-shadow:
+      0 10px 15px rgba(0, 0, 0, 0.15),
+      0 20px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+  }
+  
+  /* Título do card */
+  mat-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  /* Layout responsivo do formulário */
+  .form-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px 24px;
+  }
+  
+  /* Campo que ocupa toda a largura */
+  .full-width {
+    grid-column: 1 / -1;
+  }
+  
+  /* Estilo dos mat-form-field */
+  .mat-form-field {
+    border: 1px solid #0a1a2b;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: #fff;
+    transition: all 0.2s ease;
+  }
+  
+  .mat-form-field:hover {
+    background-color: #f1f6ff;
+    border-color: #1976d2;
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: #1976d2;
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-underline {
+    background-color: #1976d2;
+  }
+  
+  /* Checkboxes */
+  mat-checkbox .mat-checkbox-label {
+    color: #000;
+  }
+  
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #1976d2;
+  }
+  
+  /* Botões */
+  button[mat-raised-button] {
+    margin-right: 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 8px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button[color="primary"] {
+    background-color: #1976d2;
+    color: #fff;
+  }
+  
+  button[color="primary"]:hover {
+    background-color: #0f57a2;
+    transform: translateY(-2px);
+  }
+  
+  button:not([color]) {
+    background-color: #f1f3f4;
+    color: #333;
+  }
+  
+  button:not([color]):hover {
+    background-color: #e0e3e7;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsivo para telas pequenas */
+  @media screen and (max-width: 600px) {
+    mat-card {
+      padding: 16px;
+    }
+  
+    mat-card-title {
+      font-size: 18px;
+    }
+  
+    button[mat-raised-button] {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+  
